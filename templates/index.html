@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نتيجة الثانوية العامة 2026</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <h1>نتيجة الثانوية العامة 2026</h1>
+            <p>أدخل البيانات لعرض النتيجة</p>
+        </div>
+
+        <form action="/result" method="POST" id="resultForm">
+
+            <label>اسم الطالب</label>
+
+            <input
+                type="text"
+                name="name"
+                placeholder="اكتب اسم الطالب"
+                required>
+
+            <label>رقم الجلوس</label>
+
+            <input
+                type="number"
+                name="seat"
+                placeholder="اكتب رقم الجلوس"
+                required>
+
+            <label>الشعبة</label>
+
+            <select name="section" required>
+
+                <option value="" selected disabled>اختر الشعبة</option>
+
+                <option value="علوم">علمي علوم</option>
+
+                <option value="رياضة">علمي رياضة</option>
+
+                <option value="أدبي">أدبي</option>
+
+            </select>
+
+            <button type="submit">
+                🔍 عرض النتيجة
+            </button>
+
+        </form>
+
+    </div>
+
+    <!-- شاشة التحميل -->
+
+    <div id="loading">
+
+        <div class="loader"></div>
+
+        <h2>جارٍ البحث عن النتيجة...</h2>
+
+        <p>يرجى الانتظار</p>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>

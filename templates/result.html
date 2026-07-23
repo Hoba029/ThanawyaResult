@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>نتيجة الثانوية العامة 2026</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+
+        <h1>نتيجة الثانوية العامة 2026</h1>
+
+        <p>تم استخراج النتيجة بنجاح</p>
+
+    </div>
+
+    <div class="student-info">
+
+        <div class="info-row">
+            <span>اسم الطالب</span>
+            <strong>{{ name }}</strong>
+        </div>
+
+        <div class="info-row">
+            <span>رقم الجلوس</span>
+            <strong>{{ seat }}</strong>
+        </div>
+
+        <div class="info-row">
+            <span>الشعبة</span>
+            <strong>{{ section }}</strong>
+        </div>
+
+    </div>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>المادة</th>
+
+                <th>الدرجة</th>
+
+                <th>النهاية الكبرى</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for item in grades %}
+
+            <tr>
+
+                <td>{{ item.subject }}</td>
+
+                <td>{{ item.degree }}</td>
+
+                <td>{{ item.max }}</td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+    <div class="summary">
+
+        <div class="summary-box">
+
+            <h3>المجموع</h3>
+
+            <h2>{{ total }} / {{ full }}</h2>
+
+        </div>
+
+        <div class="summary-box">
+
+            <h3>النسبة</h3>
+
+            <h2>{{ percent }}%</h2>
+
+        </div>
+
+        <div class="summary-box">
+
+            <h3>الحالة</h3>
+
+            {% if status=="ناجح" %}
+
+                <h2 style="color:green">{{ status }}</h2>
+
+            {% else %}
+
+                <h2 style="color:red">{{ status }}</h2>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    <div class="buttons">
+
+        <button onclick="window.print()" class="print-btn">
+
+            🖨️ طباعة النتيجة
+
+        </button>
+
+        <button onclick="window.location='/'" class="back-btn">
+
+            🔍 بحث جديد
+
+        </button>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
